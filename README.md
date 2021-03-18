@@ -3,6 +3,8 @@
 ## Project setup
 ```
 npm install
+# Configファイルを使えるようにする
+cp src/models/config_template.ts src/models/config.ts
 ```
 
 ### Compiles and hot-reloads for development
