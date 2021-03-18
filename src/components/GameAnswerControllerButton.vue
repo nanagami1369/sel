@@ -1,17 +1,23 @@
 <template>
   <button class="answerButton" @click="click">
     <div class="antherButtonIndex" :style="iconStyle">{{ index }}</div>
-    <p class="antherButtonText">{{ answer }}</p>
+    <p class="antherButtonText">
+      <ruby>
+        <rb> {{ answer.value }} </rb>
+        <rt> {{ answer.ruby }} </rt>
+      </ruby>
+    </p>
   </button>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Emit, Watch } from 'vue-property-decorator'
 import { AnswerControllerButtonStyle } from '@/models/AnswerControllerButtonStyle'
+import { RubyString } from '@/models/RubyString'
 @Component
 export default class GameAnswerControllerButton extends Vue {
   @Prop() public index!: number
-  @Prop() public answer!: string
+  @Prop() public answer!: RubyString
   @Prop() public iconColor?: string
   public iconStyle = new AnswerControllerButtonStyle('gray')
 
@@ -28,7 +34,7 @@ export default class GameAnswerControllerButton extends Vue {
 <style scoped>
 /* ボタン全体の設定 */
 .answerButton {
-  line-height: 2em;
+  line-height: 1.5em;
   font-size: 1.5em;
   display: flex;
   height: 2.2em;

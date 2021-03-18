@@ -1,7 +1,9 @@
+import { RubyString } from './RubyString'
+
 export abstract class Quiz {
-  constructor(anther: string) {
+  constructor(anther: RubyString) {
     this.anther = anther
   }
-  public anther: string
+  public anther: RubyString
   public abstract readonly QuizStyle: string
 }

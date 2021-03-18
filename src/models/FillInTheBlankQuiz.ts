@@ -1,6 +1,7 @@
 import { Quiz } from './Quiz'
+import { RubyString } from './RubyString'
 export class FillInTheBlankQuiz extends Quiz {
-  constructor(begin: string, end: string, anther: string) {
+  constructor(begin: string, end: string, anther: RubyString) {
     super(anther)
     this.begin = begin
     this.end = end
