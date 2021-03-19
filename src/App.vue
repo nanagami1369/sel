@@ -37,7 +37,10 @@ export default class App extends Vue {
       text: text,
       buttons: [
         {
-          title: '閉じる'
+          title: '閉じる',
+          handler: () => {
+            this.$modal.hide('dialog')
+          }
         }
       ]
     })
