@@ -1,5 +1,8 @@
 <template>
-  <Game :quiz="quiz" @answer="answer" />
+  <div id="app">
+    <v-dialog />
+    <Game :quiz="quiz" @answer="answer" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,11 +25,22 @@ export default class App extends Vue {
   private questions: Quiz[] = Config.QuizData
   public answer(isSuccses: boolean) {
     if (!isSuccses) {
-      alert('不正解')
+      this.show('✕不正解')
       return
     }
-    alert('正解')
+    this.show('◯正解')
     this.quiz = randomSelectFromArray(this.questions)
+  }
+
+  private show(text: string) {
+    this.$modal.show('dialog', {
+      text: text,
+      buttons: [
+        {
+          title: '閉じる'
+        }
+      ]
+    })
   }
 }
 </script>
@@ -39,5 +53,12 @@ body {
   height: 100%;
   margin: 0px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+#app {
+  height: 100%;
+}
+
+.vue-dialog-content > div {
+  font-size: 2em;
 }
 </style>
