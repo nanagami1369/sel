@@ -1,5 +1,4 @@
-# quiz-spi
-
+# sel
 ## Project setup
 ```
 npm install
