@@ -14,7 +14,6 @@ import { Quiz } from '@/models/Quiz'
 import { randomChooseFromTheArray, randomInsertToArray } from '@/models/RandomUseArrayTools'
 import FillInTheBlankQuestion from '@/components/FillInTheBlankQuestion.vue'
 import GameAnswerController from '@/components/GameAnswerController.vue'
-import { Config } from '@/models/config'
 import { RubyString } from '@/models/RubyString'
 
 @Component({
@@ -33,7 +32,7 @@ export default class Game extends Vue {
     new RubyString('', '')
   ]
 
-  private readonly incorrectAnswers: RubyString[] = Config.FillInTheBlankIncorrectAnswers
+  @Prop() private answers!: RubyString[]
 
   @Emit()
   public answer(value: RubyString) {
@@ -42,7 +41,7 @@ export default class Game extends Vue {
 
   @Watch('quiz', { immediate: true })
   public quizChange(newQuiz: Quiz) {
-    const incorrectAnswers = this.incorrectAnswers.filter(a => a.value !== newQuiz.anther.value)
+    const incorrectAnswers = this.answers.filter(a => a.value !== newQuiz.anther.value)
     const choicedAnser = randomChooseFromTheArray(incorrectAnswers, 3)
     this.choicedAnswer = randomInsertToArray(choicedAnser, newQuiz.anther)
   }

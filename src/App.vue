@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-dialog />
-    <Game :quiz="quiz" @answer="answer" />
+    <Game :quiz="quiz" :answers="answers" @answer="answer" />
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import Game from '@/components/Game.vue'
 import { randomSelectFromArray } from '@/models/RandomUseArrayTools'
 import { Quiz } from '@/models/Quiz'
 import { Config } from '@/models/config'
+import { RubyString } from './models/RubyString'
 @Component({
   components: {
     Game
@@ -19,9 +20,11 @@ import { Config } from '@/models/config'
 export default class App extends Vue {
   constructor() {
     super()
+    this.answers = this.questions.map(q => q.anther)
     this.quiz = randomSelectFromArray(this.questions)
   }
   public quiz: Quiz
+  public answers: RubyString[]
   private questions: Quiz[] = Config.QuizData
   public answer(isSuccses: boolean) {
     if (!isSuccses) {
