@@ -5,7 +5,7 @@ export class Config {
   public static QuizData: Quiz[] = [
     new FillInTheBlankQuiz(
       '夏休みの最終日には',
-      'あるそうだ',
+      'があるそうだ',
       new RubyString('花火大会', 'はなびたいかい')
     ),
     new FillInTheBlankQuiz('就職は', 'だ！', new RubyString('臥薪嘗胆', 'がしんしょうたん')),
