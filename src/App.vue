@@ -26,8 +26,8 @@ export default class App extends Vue {
   public quiz: Quiz
   public answers: RubyString[]
   private questions: Quiz[] = Config.QuizData
-  public answer(isSuccses: boolean) {
-    if (!isSuccses) {
+  public answer(isSuccess: boolean) {
+    if (!isSuccess) {
       this.show('✕不正解')
       return
     }
